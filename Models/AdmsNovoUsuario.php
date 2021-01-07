@@ -10,7 +10,6 @@ if (!defined('URL')) {
 
 class AdmsNovoUsuario
 {
-
     private $Dados;
     private $Resultado;
     private $InfoCadUser;
@@ -45,7 +44,7 @@ class AdmsNovoUsuario
             }
         }
     }
-    
+
     private function validarDados()
     {
         $this->Dados = array_map('strip_tags', $this->Dados);
@@ -70,15 +69,9 @@ class AdmsNovoUsuario
         $cadUser = new \App\adms\Models\helper\AdmsCreate();
         $cadUser->exeCreate('adms_usuarios', $this->Dados);
         if ($cadUser->getResultado()) {
-            if($this->InfoCadUser[0]['env_email_conf'] == 1){
-                $this->dadosEmail();
-            }else{
-                $_SESSION['msg'] = "<div class='alert alert-success'>Usuário cadastrado com sucesso!</div>";
-                $this->Resultado = true;
-            }
-            
+            $this->dadosEmail();
         } else {
-            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Não foi possível realizar seu cadastrado!</div>";
+            $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Usuário não foi cadastrado com sucesso!</div>";
             $this->Resultado = false;
         }
     }
@@ -100,21 +93,21 @@ class AdmsNovoUsuario
         $this->DadosEmail['cont_email'] = "Caro(a) $prim_nome ,<br><br>";
         $this->DadosEmail['cont_email'] .= "Obrigado por se cadastrar conosco. Para ativar seu perfil, clique no link abaixo:<br><br>";
         $this->DadosEmail['cont_email'] .= "<a href='" . URLADM . "confirmar/confirmar_email?chave=" . $this->Dados['conf_email'] . "'>Clique aqui</a><br><br>";
-        $this->DadosEmail['cont_email'] .= "Obrigado<br>";        
-        
+        $this->DadosEmail['cont_email'] .= "Obrigado<br>";
+
         $this->DadosEmail['cont_text_email'] = "Caro(a) $prim_nome ,";
         $this->DadosEmail['cont_text_email'] .= "Obrigado por se cadastrar conosco. Para ativar seu perfil, copie o endereço abaixo e cole no navegador:";
         $this->DadosEmail['cont_text_email'] .= URLADM . "confirmar/confirmar_email?chave=" . $this->Dados['conf_email'];
         $this->DadosEmail['cont_text_email'] .= "Obrigado";
-        
+
         $emailPHPMailer = new \App\adms\Models\helper\AdmsPhpMailer();
         $emailPHPMailer->emailPhpMailer($this->DadosEmail);
         if($emailPHPMailer->getResultado()){
             $_SESSION['msg'] = "<div class='alert alert-success'>Usuário cadastrado com sucesso. Enviado no seu e-mail o link para confirmar o e-mail!</div>";
-            $this->Resultado = true;            
+            $this->Resultado = true;
         }else{
             $_SESSION['msg'] = "<div class='alert alert-primary'>Usuário cadastrado com sucesso. Erro: Não foi possivel enviar o link no seu e-mail para confirmar o e-mail!</div>";
-            $this->Resultado = false; 
+            $this->Resultado = false;
         }
     }
 

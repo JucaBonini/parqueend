@@ -7,7 +7,7 @@
             <!-- Nested Row within Card Body -->
             <div class="row">
                 <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                    <img src="<?php echo URLADM; ?>/assets/images/caduser.png"
+                    <img src="<?php echo URLADM; ?>/assets/imagens/caduser.png"
                          style="background-position: center;  background-size: cover;">
 
                 </div>
@@ -31,7 +31,7 @@
                             $valorForm = $this->Dados['form'];
                         }
                         ?>
-                        <form class="user" name="formuser" method="POST" action="">
+                        <form class="user" name="formuser" method="POST" action="" >
 
                             <div class="form-group">
                                 <input type="text" name="nome" class="form-control form-control-user"
@@ -69,11 +69,8 @@
                                 } ?>">
                             </div>
                             <div class="form-group">
-
                                 <input type="password" name="senha" class="form-control form-control-user"
                                        placeholder="Digite uma senha ">
-
-
                             </div>
 
                             <input name="CadUserLogin" id="CadUserLogin" type="submit" class="btn btn-success btn-user btn-block"
@@ -142,6 +139,7 @@
 
     }
 </script>
+
 
 
 

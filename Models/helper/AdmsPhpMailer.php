@@ -10,11 +10,6 @@ if (!defined('URL')) {
     exit();
 }
 
-/**
- * Description of AdmsPhpMailer
- *
- * @author Celke
- */
 class AdmsPhpMailer
 {
 
@@ -70,7 +65,7 @@ class AdmsPhpMailer
                 $_SESSION['msg'] = "<div class='alert alert-success'>E-mail enviado com sucesso!</div>";
                 $this->Resultado = true;
             } else {
-                $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: E-mail não foi enviado com sucesso!</div>";
+                $_SESSION['msg'] = "<div class='alert alert-danger'>Erro: Não foi possível enviar o E-mail!</div>";
                 $this->Resultado = false;
             }
         } catch (Exception $e) {

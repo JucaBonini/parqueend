@@ -34,7 +34,7 @@ if (isset($this->Dados['form'][0])) {
         <form method="POST" action="" enctype="multipart/form-data"> 
             
             <div class="form-row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-7">
                     <label><span class="text-danger">*</span> Nome</label>
                     <input name="nome" type="text" class="form-control" placeholder="Digite o nome completo" value="<?php
                     if (isset($valorForm['nome'])) {
@@ -42,9 +42,30 @@ if (isset($this->Dados['form'][0])) {
                     }
                     ?>">
                 </div>
-                <div class="form-group col-md-6">
+
+
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
                     <label><span class="text-danger">*</span> Apelido</label>
-                    <input name="apelido" type="text" class="form-control" placeholder="Como gostaria de ser chamado" value="<?php
+                    <input name="contato" type="text" class="form-control" placeholder="Como gostaria de ser chamado" value="<?php
+                    if (isset($valorForm['contato'])) {
+                        echo $valorForm['contato'];
+                    }
+                    ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label><span class="text-danger">*</span> Data Nascimento</label>
+                    <input id="dtnasc" name="datanasc" placeholder="DD/MM/AAAA" class="form-control input-md" required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)" onBlur="showhide()" value="<?php
+                    if (isset($valorForm['datanasc'])) {
+                        echo $valorForm['datanasc'];
+                    }
+                    ?>">
+                </div>
+                <div class="form-group col-md-3">
+                    <label><span class="text-danger">*</span> Contato</label>
+                    <input name="apelido" type="text" class="form-control" placeholder="Digite seu CELULAR com DDD" value="<?php
                     if (isset($valorForm['apelido'])) {
                         echo $valorForm['apelido'];
                     }
@@ -115,7 +136,7 @@ if (isset($this->Dados['form'][0])) {
             <div class="form-row">
                 <div class="form-group col-md-6">
 
-                    <label><span class="text-danger">*</span> Foto </label>
+                    <label><span class="text-danger">*</span> Foto (self ou 3x4)</label>
                     <input name="imagem_nova" type="file" onchange="previewImagem();">
                 </div>
                 <div class="form-group col-md-6">
