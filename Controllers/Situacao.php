@@ -7,11 +7,6 @@ if (!defined('URL')) {
     exit();
 }
 
-/**
- * Description of Situacao
- *
- * @copyright (c) year, Cesar Szpak - Celke
- */
 class Situacao
 {
 
